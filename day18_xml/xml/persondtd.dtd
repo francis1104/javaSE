@@ -1,0 +1,22 @@
+<!--
+    第一行一定是用来规定根标签的
+    这里就表示根标签名必须叫persons,小括号里表示的是根标签有什么子标签
+    * 号表示子标签可以有0个或多个
+    + 号表示至少有一个或多个
+    没有量词符号就说明要有一个
+-->
+<!ELEMENT persons (person+)>
+<!--
+    第二行表示person标签的子标签
+    只能是name和age, 这里子标签严格遵守左右位置关系,左边的必须先定义,定义在上面
+-->
+<!ELEMENT person (name,age)>
+<!--
+    #PCDATA
+        表示当前标签所对应的内容是一个简单类型,可以理解为文本类型
+-->
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT age (#PCDATA)>
+
+<!--需求: 让person标签必须拥有id属性,属性值唯一-->
+<!ATTLIST person id CDATA #REQUIRED>

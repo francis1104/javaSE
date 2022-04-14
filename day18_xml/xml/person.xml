@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--引入dtd约束-->
+<!--
+    1. DOCTYPE 后面要跟上约束文档中规定的根标签名
+    2. SYSTEM表示引入的dtd文件是本地的, 后面跟上该dtd文件的路径即可
+-->
+<!DOCTYPE persons SYSTEM 'persondtd.dtd'>
+
+<persons>
+    <person id="1">
+        <name>张三</name>
+        <age>23</age>
+    </person>
+
+    <person id="2">
+        <name>李四</name>
+        <age>24</age>
+    </person>
+</persons>

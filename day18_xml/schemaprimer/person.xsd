@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xsd:schema xmlns="http://www.itcast.cn/xml"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.itcast.cn/xml" elementFormDefault="qualified">
+
+    <!--规定了根标签必须叫persons-->
+    <xsd:element name="persons" type="personsType"/>
+
+    <!--complexType: 表示当前类型是一个复杂类型-->
+    <xsd:complexType name="personsType">
+        <xsd:sequence>
+            <!--minOccurs: 最少出现次数-->
+            <!--maxOccurs: 最大出现次数    unbounded: 无穷大, 无数个-->
+            <xsd:element name="person" type="personType" minOccurs="1" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="personType">
+        <!--sequence: 表示队列. 子标签顺序要遵守从上往下的规则!-->
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element name="age" type="ageType" />
+            <xsd:element name="sex" type="sexType" />
+        </xsd:sequence>
+
+        <xsd:attribute name="number" type="numberType" use="required"/>
+    </xsd:complexType>
+
+    <xsd:simpleType name="sexType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="男"/>
+            <xsd:enumeration value="女"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <!--simpleType: 表示简单类型-->
+    <xsd:simpleType name="ageType">
+        <xsd:restriction base="xsd:integer">
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="256"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="numberType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="heima_\d{4}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>
